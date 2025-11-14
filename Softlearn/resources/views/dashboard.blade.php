@@ -2,14 +2,14 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
-            <h1 class="text-3xl font-bold text-gray-900 mb-6">
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 Bem-vindo, {{ Auth::user()->name }}!
             </h1>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-                <div class="lg:col-span-2 bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Exercícios resolvidos da semana</h3>
+                <div class="lg:col-span-2 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Exercícios resolvidos da semana</h3>
                     
                     <div class="flex flex-col md:flex-row items-center justify-between">
                         <div class="w-48 h-48 mb-4 md:mb-0">
@@ -34,13 +34,13 @@
                     </div>
                 </div>
 
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     </div>
 
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                    <h3 class="text-lg font-semibold">Lista de FlashCards</h3>
-                    <p class="text-sm text-gray-500 mb-4">"Listagem de flash cards (total)"</p>
-                    <ul class="space-y-3">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Lista de FlashCards</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">"Listagem de flash cards (total)"</p>
+                    <ul class="space-y-3 text-gray-900 dark:text-gray-100">
                         <li class="flex items-center">
                             <span class="text-green-500 mr-2">✔</span> Scrumm
                         </li>
@@ -53,10 +53,10 @@
                     </ul>
                 </div>
 
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                    <h3 class="text-lg font-semibold">Lista de Diagramas</h3>
-                    <p class="text-sm text-gray-500 mb-4">"Listagem de diagramas (total)"</p>
-                    <ul class="space-y-3">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Lista de Diagramas</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">"Listagem de diagramas (total)"</p>
+                    <ul class="space-y-3 text-gray-900 dark:text-gray-100">
                         <li class="flex items-center">
                             <span class="text-green-500 mr-2">✔</span> Casos de Usos
                         </li>
