@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.diagram-node.selected-node {
+    border: 3px solid #F59E0B;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.7);
+}
+
+.selected-connection {
+    stroke: #ff4500 !important; 
+    
+    stroke-width: 4px !important; 
+}
