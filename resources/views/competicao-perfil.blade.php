@@ -1,9 +1,10 @@
 <x-app-layout>
+    {{-- MOD 1: Fundo principal já adaptado. Manter. --}}
     <div class="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900 py-8 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Botão Voltar -->
             <div class="mb-6">
+                {{-- MOD 2: Botão Voltar --}}
                 <a href="{{ route('competicao') }}" 
                    class="inline-flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -13,18 +14,18 @@
                 </a>
             </div>
 
-            <!-- Card do Perfil -->
+            {{-- MOD 3: Fundo do Card de Perfil. Manter o gradiente de cores para Posição (1º, 2º, 3º). --}}
             <div class="bg-gradient-to-br {{ $user['position'] == 1 ? 'from-yellow-400 via-orange-400 to-pink-400' : ($user['position'] == 2 ? 'from-gray-300 via-gray-400 to-gray-500' : ($user['position'] == 3 ? 'from-orange-300 via-orange-400 to-orange-500' : 'from-purple-400 via-blue-400 to-indigo-400')) }} rounded-xl shadow-2xl p-8 relative overflow-hidden mb-6">
-                <!-- Efeito de brilho animado -->
+                
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer"></div>
                 
                 <div class="relative z-10">
                     <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
-                        <!-- Avatar Grande -->
                         <div class="relative">
                             @if($user['position'] <= 3)
                                 <div class="absolute inset-0 {{ $user['position'] == 1 ? 'bg-yellow-300' : ($user['position'] == 2 ? 'bg-gray-300' : 'bg-orange-300') }} rounded-full animate-ping opacity-75"></div>
                             @endif
+                            {{-- Borda do Avatar (Manter branco) --}}
                             <img src="{{ $user['avatar'] }}" 
                                  alt="{{ $user['name'] }}" 
                                  class="w-32 h-32 rounded-full border-4 border-white shadow-xl relative z-10">
@@ -32,7 +33,9 @@
                         
                         <div class="flex-1 text-center md:text-left">
                             <div class="flex flex-col md:flex-row md:items-center md:space-x-3 mb-4">
+                                {{-- Nome (Manter branco) --}}
                                 <h1 class="text-4xl font-bold text-white mb-2 md:mb-0">{{ $user['name'] }}</h1>
+                                {{-- Emblemas de Posição (Manter cores claras para contraste com o fundo colorido) --}}
                                 @if($user['position'] == 1)
                                     <span class="px-4 py-2 bg-white/90 rounded-full text-sm font-bold text-orange-600 inline-block">
                                         🏆 Mestre em Modelagem
@@ -47,6 +50,8 @@
                                     </span>
                                 @endif
                             </div>
+                            
+                            {{-- Estatísticas (Posição, Nível, XP, Emblemas - Manter branco) --}}
                             <div class="flex flex-wrap justify-center md:justify-start items-center gap-6 text-white">
                                 <div>
                                     <span class="text-sm opacity-90 block">Posição no Ranking</span>
@@ -80,17 +85,16 @@
                 </div>
             </div>
 
-            <!-- Estatísticas -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <!-- Pontos Altos -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors duration-300">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
                         <svg class="w-6 h-6 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                         </svg>
                         Pontos Altos
                     </h3>
                     <div class="space-y-4">
+                        {{-- Card Streak --}}
                         <div class="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/30 rounded-lg transition-colors">
                             <div class="flex items-center space-x-3">
                                 <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -103,6 +107,7 @@
                             </div>
                             <span class="text-2xl">🔥</span>
                         </div>
+                        {{-- Card Maior XP --}}
                         <div class="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg transition-colors">
                             <div class="flex items-center space-x-3">
                                 <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
@@ -114,6 +119,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- Card Diagramas Completados --}}
                         <div class="flex items-center justify-between p-3 bg-purple-50 dark:bg-purple-900/30 rounded-lg transition-colors">
                             <div class="flex items-center space-x-3">
                                 <svg class="w-8 h-8 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20">
@@ -126,6 +132,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- Card Precisão Média --}}
                         <div class="flex items-center justify-between p-3 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg transition-colors">
                             <div class="flex items-center space-x-3">
                                 <svg class="w-8 h-8 text-yellow-600 dark:text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -140,7 +147,6 @@
                     </div>
                 </div>
 
-                <!-- Velocidade de Aprendizado -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors duration-300">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
                         <svg class="w-6 h-6 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
@@ -149,14 +155,17 @@
                         Velocidade de Aprendizado
                     </h3>
                     <div class="space-y-4">
+                        {{-- Card Tempo Médio --}}
                         <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg transition-colors">
                             <p class="text-sm text-gray-600 dark:text-gray-300 mb-1">Tempo Médio por Exercício</p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $user['avgTime'] ?? 'N/A' }}</p>
                         </div>
+                        {{-- Card Taxa de Evolução --}}
                         <div class="p-3 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg transition-colors">
                             <p class="text-sm text-gray-600 dark:text-gray-300 mb-1">Taxa de Evolução</p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $user['evolutionRate'] ?? 'N/A' }}</p>
                         </div>
+                        {{-- Card XP Médio por Dia --}}
                         <div class="p-3 bg-purple-50 dark:bg-purple-900/30 rounded-lg transition-colors">
                             <p class="text-sm text-gray-600 dark:text-gray-300 mb-1">XP Médio por Dia</p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-white">~{{ $user['avgXpPerDay'] ?? 0 }} XP</p>
@@ -165,7 +174,6 @@
                 </div>
             </div>
 
-            <!-- Análise por Tipo de Diagrama -->
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-6 transition-colors duration-300">
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Domínio por Tipo de Diagrama</h3>
                 <div class="space-y-4">
@@ -181,10 +189,12 @@
                     @endphp
                     @foreach($diagrams as $diagram)
                         <div>
+                            {{-- Nome do Diagrama e Percentual --}}
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ $diagram['name'] }}</span>
                                 <span class="text-sm font-bold text-gray-900 dark:text-white">{{ $diagram['percentage'] }}%</span>
                             </div>
+                            {{-- Barra de Progresso --}}
                             <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
                                 <div class="h-full rounded-full transition-all duration-500 {{ 
                                     $diagram['color'] == 'green' ? 'bg-gradient-to-r from-green-400 to-green-600' : 
@@ -192,6 +202,7 @@
                                     'bg-gradient-to-r from-yellow-400 to-yellow-600') 
                                 }}" style="width: {{ $diagram['percentage'] }}%"></div>
                             </div>
+                            {{-- Mensagem de Status --}}
                             <div class="flex items-center mt-1 space-x-2">
                                 @if($diagram['percentage'] >= 85)
                                     <span class="text-xs text-green-600 dark:text-green-400 font-semibold">✓ Domínio Excelente</span>
@@ -210,6 +221,7 @@
     </div>
 
     <style>
+        /* Manter estilos customizados */
         @keyframes shimmer {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }

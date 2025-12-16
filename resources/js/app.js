@@ -73,64 +73,96 @@ Alpine.start();
 
 document.addEventListener('DOMContentLoaded', () => {
     const htmlElement = document.documentElement;
+    
+    // Seletores dos dois botões de alternância
     const toggleButton = document.getElementById('theme-toggle');
-    const sunIcon = document.getElementById('sun-icon');
-    const moonIcon = document.getElementById('moon-icon');
-    // Função auxiliar para atualizar a UI do botão (Sol/Lua)
+    const toggleButtonResp = document.getElementById('theme-toggle-responsive');
+
+    // Seletores dos ícones no botão normal (navigation.blade.php)
+    const sunIcon = document.getElementById('theme-toggle-light-icon');
+    const moonIcon = document.getElementById('theme-toggle-dark-icon');
+    
+    // Seletores dos ícones no botão responsivo (navigation.blade.php)
+    const sunIconResp = document.getElementById('theme-toggle-light-icon-resp');
+    const moonIconResp = document.getElementById('theme-toggle-dark-icon-resp');
+
+    // Funções auxiliares para atualizar a UI dos ícones
     const updateIcons = (isDark) => {
+        const hideClass = 'hidden';
+        
+        // Alterna o botão normal
         if (sunIcon && moonIcon) {
             if (isDark) {
-                // Se está no modo Escuro, mostre a Lua (moon) e esconda o Sol (sun)
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
-
+                sunIcon.classList.add(hideClass);
+                moonIcon.classList.remove(hideClass);
             } else {
-                // Se está no modo Claro, mostre o Sol (sun) e esconda a Lua (moon)
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-
+                sunIcon.classList.remove(hideClass);
+                moonIcon.classList.add(hideClass);
+            }
+        }
+        
+        // Alterna o botão responsivo
+        if (sunIconResp && moonIconResp) {
+            if (isDark) {
+                sunIconResp.classList.add(hideClass);
+                moonIconResp.classList.remove(hideClass);
+            } else {
+                sunIconResp.classList.remove(hideClass);
+                moonIconResp.classList.add(hideClass);
             }
         }
     };
 
     // 1. Sincronização Inicial:
     // Garante que o ícone inicial esteja correto, baseado na classe 'dark' 
-    // que já foi aplicada pelo script inline no <head>
-    updateIcons(htmlElement.classList.contains('dark'));
+    const initialIsDark = htmlElement.classList.contains('dark');
+    updateIcons(initialIsDark);
 
     // 2. Lógica de Alternância (No Clique)
-    if (toggleButton) {
-        toggleButton.addEventListener('click', () => {
-            let newTheme;
-            let settings = {};
-            const stored = localStorage.getItem('softlearn.settings');
-            // Tenta carregar as configurações existentes
-            if (stored) {
-                try {
-                    settings = JSON.parse(stored);
-                } catch (e) {
-                    console.error("Erro ao parsear settings:", e);
-                }
+    const handleToggleClick = () => {
+        let newTheme;
+        let settings = {};
+        
+        // Carrega as settings existentes (Lógica mantida do seu código original)
+        const stored = localStorage.getItem('softlearn.settings');
+        if (stored) {
+            try {
+                settings = JSON.parse(stored);
+            } catch (e) {
+                console.error("Erro ao parsear settings:", e);
             }
-            // Alternar a classe 'dark' no <html>
-            if (htmlElement.classList.contains('dark')) {
-                // Se estava Dark, vai para Light
-                htmlElement.classList.remove('dark');
-                newTheme = 'light';
-            } else {
-                // Se estava Light (ou sistema), vai para Dark
-                htmlElement.classList.add('dark');
-                newTheme = 'dark';
-            }
-            // 3. Atualizar ícones e Salvar a Preferência
-            updateIcons(newTheme === 'dark');
+        }
 
-            // Salva o novo tema na estrutura de settings que você já usa
-            settings.theme = newTheme;
-            localStorage.setItem('softlearn.settings', JSON.stringify(settings));
-        });
+        // Alternar a classe 'dark' no <html>
+        const wasDark = htmlElement.classList.contains('dark');
+        if (wasDark) {
+            htmlElement.classList.remove('dark');
+            newTheme = 'light';
+        } else {
+            htmlElement.classList.add('dark');
+            newTheme = 'dark';
+        }
+        
+        // 3. Atualizar ícones e Salvar a Preferência
+        updateIcons(newTheme === 'dark');
+        localStorage.setItem('color-theme', newTheme); // Salva a preferência diretamente
+        
+        // Salva o novo tema na estrutura de settings
+        settings.theme = newTheme;
+        localStorage.setItem('softlearn.settings', JSON.stringify(settings));
+    };
+
+    // Aplica o listener aos dois botões
+    if (toggleButton) {
+        toggleButton.addEventListener('click', handleToggleClick);
+    }
+    if (toggleButtonResp) {
+        // Se a pessoa clica no botão responsivo, ele deve fazer o mesmo toggle
+        toggleButtonResp.addEventListener('click', handleToggleClick);
     }
 });
+
+
 
 
 

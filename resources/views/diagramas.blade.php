@@ -8,11 +8,13 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     {{-- Container Principal --}}
+    {{-- MOD 1: Fundo da Tela --}}
     <div class="flex flex-col h-[calc(100vh-65px)] bg-gray-50 dark:bg-gray-900 font-sans overflow-hidden transition-colors duration-300">
 
         {{-- ========================================== --}}
         {{-- CABEÇALHO SUPERIOR (Título e Ações)        --}}
         {{-- ========================================== --}}
+        {{-- MOD 2: Cabeçalho Superior --}}
         <div class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm z-30 shrink-0">
             <div class="flex justify-between items-center px-6 py-4 bg-slate-800 dark:bg-black text-white">
                 <div class="flex items-center gap-5">
@@ -39,7 +41,6 @@
         {{-- PAINEL DE MISSÃO (Expandido e Destacado)   --}}
         {{-- ========================================== --}}
         <div id="mission-panel" class="relative z-20 shrink-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors">
-            <!-- Padrão de fundo sutil para dar textura -->
             <div class="absolute inset-0 opacity-5 dark:opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
             
             <div class="relative px-8 py-8 max-w-7xl mx-auto">
@@ -88,6 +89,7 @@
                     <i class="fa-solid fa-bezier-curve"></i> Conexões:
                 </span>
                 
+                {{-- Botões de Conexão (Estilizados via CSS na tag <style> - Manter no HTML) --}}
                 <button onclick="setLinkType('Association')" id="btn-link-Association" class="tool-btn active group" title="Associação">
                     <span class="h-[3px] w-8 bg-slate-600 dark:bg-slate-400 group-hover:bg-blue-600 mb-1 rounded-full"></span>
                     <span class="text-[10px] font-bold uppercase">Assoc.</span>
@@ -115,6 +117,7 @@
                 </button>
             </div>
             
+            {{-- Dicas de Ação (Já adaptado) --}}
             <div class="hidden xl:flex items-center gap-6 text-xs font-medium text-slate-500 dark:text-slate-400 bg-gray-50 dark:bg-gray-700/50 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700">
                 <span class="flex items-center gap-2"><i class="fa-solid fa-mouse-pointer text-blue-500"></i> Clique: Selecionar</span>
                 <span class="flex items-center gap-2"><i class="fa-solid fa-pen text-green-500"></i> 2x Clique: Editar</span>
@@ -128,6 +131,7 @@
         <div class="flex flex-1 overflow-hidden relative">
             
             {{-- PALETA LATERAL --}}
+            {{-- MOD 3: Fundo da Paleta --}}
             <div class="w-72 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-10 overflow-y-auto shrink-0 select-none transition-colors">
                 <div class="p-6 border-b border-gray-100 dark:border-gray-700">
                     <h4 class="font-bold text-slate-800 dark:text-white text-sm flex items-center gap-2 mb-1">
@@ -167,32 +171,37 @@
             </div>
 
             {{-- CANVAS --}}
+            {{-- MOD 4: Fundo do Canvas (Estilizado via <style>) --}}
             <div class="flex-1 relative bg-gray-100 dark:bg-gray-950 overflow-auto" id="scroll-container">
                 <div id="diagram-canvas" class="w-[2000px] h-[2000px] relative top-0 left-0 outline-none z-0 shadow-inner" 
                      ondrop="drop(event)" ondragover="allowDrop(event)">
                 </div>
             </div>
             
-            {{-- MENUS DE CONTEXTO (Invisíveis até serem chamados) --}}
-            @include('components.diagram-context-menus') {{-- Opcional se quiser extrair, mas mantendo aqui abaixo por simplicidade --}}
+            {{-- MENUS DE CONTEXTO --}}
+            @include('components.diagram-context-menus') {{-- Assumindo que este partial foi criado --}}
             
+            {{-- MOD 5: Menu de Contexto do Canvas --}}
             <div id="canvas-context-menu" class="hidden absolute bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-2xl rounded-lg z-[2000] min-w-[200px] py-1 overflow-hidden font-sans">
                 <div class="px-3 py-2 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-gray-700 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Adicionar Elemento</div>
-                <button onclick="addActorAtMouse()" class="w-full text-left px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 flex items-center gap-3 transition-colors"><i class="fa-solid fa-user w-5 text-center text-slate-400"></i> Ator</button>
-                <button onclick="addUseCaseAtMouse()" class="w-full text-left px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 flex items-center gap-3 transition-colors"><div class="w-5 h-3 border border-current rounded-[50%] text-slate-400"></div> Caso de Uso</button>
-                <button onclick="addSystemAtMouse()" class="w-full text-left px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 flex items-center gap-3 transition-colors"><i class="fa-regular fa-square w-5 text-center text-slate-400"></i> Sistema</button>
+                <button onclick="addActorAtMouse()" class="w-full text-left px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 flex items-center gap-3 transition-colors"><i class="fa-solid fa-user w-5 text-center text-slate-400 dark:text-slate-400"></i> Ator</button>
+                <button onclick="addUseCaseAtMouse()" class="w-full text-left px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 flex items-center gap-3 transition-colors"><div class="w-5 h-3 border border-current rounded-[50%] text-slate-400 dark:text-slate-400"></div> Caso de Uso</button>
+                <button onclick="addSystemAtMouse()" class="w-full text-left px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 flex items-center gap-3 transition-colors"><i class="fa-regular fa-square w-5 text-center text-slate-400 dark:text-slate-400"></i> Sistema</button>
             </div>
 
+            {{-- MOD 6: Menu de Contexto dos Nodes --}}
             <div id="custom-context-menu" class="hidden absolute bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-2xl rounded-lg z-[1000] min-w-[180px] py-1 overflow-hidden font-sans">
-                <button onclick="handleContextRename()" id="ctx-rename" class="w-full text-left px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 flex items-center gap-3 transition-colors"><i class="fa-solid fa-pen w-4 text-center text-slate-400"></i> Renomear</button>
-                <button onclick="handleContextRemoveFromGroup()" id="ctx-remove-group" class="w-full text-left px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 flex items-center gap-3 transition-colors"><i class="fa-solid fa-arrow-right-from-bracket w-4 text-center text-slate-400"></i> Sair do Grupo</button>
+                <button onclick="handleContextRename()" id="ctx-rename" class="w-full text-left px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 flex items-center gap-3 transition-colors"><i class="fa-solid fa-pen w-4 text-center text-slate-400 dark:text-slate-400"></i> Renomear</button>
+                <button onclick="handleContextRemoveFromGroup()" id="ctx-remove-group" class="w-full text-left px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 flex items-center gap-3 transition-colors"><i class="fa-solid fa-arrow-right-from-bracket w-4 text-center text-slate-400 dark:text-slate-400"></i> Sair do Grupo</button>
                 <div class="h-px bg-gray-100 dark:bg-gray-700 my-1"></div>
                 <button onclick="handleContextDelete()" id="ctx-delete" class="w-full text-left px-4 py-3 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center gap-3 transition-colors"><i class="fa-solid fa-trash w-4 text-center"></i> Excluir</button>
             </div>
         </div>
     </div>
 
-    {{-- ESTILOS CSS --}}
+    {{-- ========================================== --}}
+    {{-- ESTILOS CSS (Adaptando Canvas e Nodes)     --}}
+    {{-- ========================================== --}}
     <style>
         /* CANVAS GRID */
         #diagram-canvas { 
