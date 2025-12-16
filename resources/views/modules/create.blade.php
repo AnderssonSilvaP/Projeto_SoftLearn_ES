@@ -12,9 +12,11 @@
 
                     @if ($errors->any())
                         <div class="mb-4">
-                            <div class="font-medium text-red-600">{{ __('Opa! Algo deu errado.') }}</div>
+                            {{-- MODIFICAÇÃO 1: Rótulo de erro --}}
+                            <div class="font-medium text-red-600 dark:text-red-400">{{ __('Opa! Algo deu errado.') }}</div>
 
-                            <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                            {{-- MODIFICAÇÃO 2: Lista de erros --}}
+                            <ul class="mt-3 list-disc list-inside text-sm text-red-600 dark:text-red-400">
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
@@ -26,19 +28,25 @@
                         @csrf
 
                         <div>
+                            {{-- Rótulo do Input (Já estava correto) --}}
                             <label for="nome" class="block font-medium text-sm text-gray-700 dark:text-gray-300">Nome do Módulo</label>
+                            {{-- Input de Texto (Já estava correto) --}}
                             <input id="nome" name="nome" type="text" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required autofocus autocomplete="nome">
                         </div>
 
                         <div class="mt-4">
+                            {{-- Rótulo do Textarea (Já estava correto) --}}
                             <label for="descricao" class="block font-medium text-sm text-gray-700 dark:text-gray-300">Descrição (Opcional)</label>
+                            {{-- Textarea (Já estava correto) --}}
                             <textarea id="descricao" name="descricao" rows="4" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"></textarea>
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
+                            {{-- Link de Cancelar (Faltava dark:hover:text-gray-100 no offset) --}}
                             <a href="{{ route('modules.index') }}" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
                                 Cancelar
                             </a>
+                            {{-- Botão de Envio (Já estava correto) --}}
                             <button type="submit" class="ms-4 inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                 Salvar Módulo
                             </button>

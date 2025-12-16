@@ -8,6 +8,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
+                {{-- Card de Gráfico/Estatísticas --}}
                 <div class="lg:col-span-2 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Exercícios resolvidos da semana</h3>
                     
@@ -16,7 +17,8 @@
                             <img src="https://via.placeholder.com/200" alt="Gráfico de Pizza" class="rounded-full">
                         </div>
 
-                        <ul class="space-y-2 text-sm">
+                        {{-- Lista de Legendas (Texto estava faltando dark:) --}}
+                        <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                             <li class="flex items-center">
                                 <span class="w-3 h-3 rounded-full bg-red-500 mr-2"></span> Flash Cards
                             </li>
@@ -34,12 +36,17 @@
                     </div>
                 </div>
 
+                {{-- Card Vazio (Assumindo que será preenchido depois) --}}
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                    </div>
+                    {{-- Este card está vazio no código original, mas o fundo está correto. --}}
+                </div>
 
+                {{-- Card Lista de FlashCards --}}
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Lista de FlashCards</h3>
+                    {{-- Texto de descrição (Já estava correto) --}}
                     <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">"Listagem de flash cards (total)"</p>
+                    {{-- Lista de itens (Já estava correto) --}}
                     <ul class="space-y-3 text-gray-900 dark:text-gray-100">
                         <li class="flex items-center">
                             <span class="text-green-500 mr-2">✔</span> Scrumm
@@ -53,9 +60,12 @@
                     </ul>
                 </div>
 
+                {{-- Card Lista de Diagramas --}}
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Lista de Diagramas</h3>
+                    {{-- Texto de descrição (Já estava correto) --}}
                     <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">"Listagem de diagramas (total)"</p>
+                    {{-- Lista de itens (Já estava correto) --}}
                     <ul class="space-y-3 text-gray-900 dark:text-gray-100">
                         <li class="flex items-center">
                             <span class="text-green-500 mr-2">✔</span> Casos de Usos
