@@ -1,61 +1,72 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Projeto SoftLearn ES
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-## About Laravel
+> **Plataforma interativa e gamificada para o ensino de Engenharia de Software.**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O **SoftLearn ES** transforma o aprendizado de modelagem de sistemas (UML, DFD, DER) em uma experiência envolvente. Através de um laboratório interativo (sandbox) e mecânicas de jogos, os alunos progridem em sua jornada de conhecimento de forma prática.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🎯 Funcionalidades Principais
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **🎮 Gamificação Completa**: Sistema de XP, níveis, emblemas (badges) e rankings globais.
+- **🛠️ Sandbox de Modelagem**: Ferramenta interativa para criar e validar diagramas UML, DFD e DER em tempo real.
+- **📚 Módulos de Conteúdo**: Trilhas de aprendizado progressivas com teoria e prática.
+- **📊 Painel do Aluno**: Visualização de progresso pessoal e conquistas.
 
-## Learning Laravel
+## 🛠️ Tecnologias Utilizadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Back-end**: PHP 8.x, Laravel 10/11
+- **Front-end**: Blade Templates, TailwindCSS, Vite
+- **Banco de Dados**: MySQL / PostgreSQL
+- **Testes**: PHPUnit / Pest
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🚀 Como Rodar o Projeto
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Pré-requisitos
+- PHP >= 8.1
+- Composer
+- Node.js & NPM
+- MySQL
 
-## Laravel Sponsors
+### Passo a passo
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Clone o repositório**
+   ```bash
+   git clone https://github.com/AnderssonSilvaP/Projeto_SoftLearn_ES.git
+   cd Projeto_SoftLearn_ES
+   ```
 
-### Premium Partners
+2. **Instale as dependências**
+   ```bash
+   composer install
+   npm install
+   ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+3. **Configure o ambiente**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   *Configure suas credenciais de banco de dados no arquivo `.env`.*
 
-## Contributing
+4. **Prepare o banco de dados**
+   ```bash
+   php artisan migrate --seed
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. **Inicie o servidor**
+   ```bash
+   npm run dev
+   php artisan serve
+   ```
+   Acesse: `http://localhost:8000`
 
-## Code of Conduct
+## 🤝 Como Contribuir
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Contribuições são sempre bem-vindas! Veja o nosso arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para saber como começar.
 
-## Security Vulnerabilities
+## 📝 Licença
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
