@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\CompeticaoController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\FlashcardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,9 +35,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/competicao', [CompeticaoController::class, 'index'])->name('competicao');
     Route::get('/competicao/{id}', [CompeticaoController::class, 'show'])->name('competicao.perfil');
 
+    //Rota dos flashcards
+    Route::get('/flashcards', [FlashcardController::class, 'index'])->name('flashcards');
+    Route::get('/api/next-card', [FlashcardController::class, 'nextCard'])->name('api.next-card');
+
     $pages = [
         'dashboard' => 'dashboard',
-        'flashcards' => 'flashcards',
+        //'flashcards' => 'flashcards', usa controller agora
         'diagramas' => 'diagramas',
         'calendario' => 'calendario',
         'revisoes' => 'revisoes',
