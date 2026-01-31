@@ -7,6 +7,7 @@ use App\Models\Aula_modulos;
 use App\Models\Lesson;
 use App\Models\LessonCompletion;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Modulo;
 
 class ModuleController extends Controller
 {
@@ -14,13 +15,13 @@ class ModuleController extends Controller
     {
         $userId = Auth::id();
 
-        $modules = Aula_modulos::withCount('lessons')->get();
+        $modules = Modulo::withCount('lessons')->get();
 
         $completedByModule = LessonCompletion::where('user_id', $userId)
             ->join('lessons', 'lessons.id', '=', 'lesson_completions.lesson_id')
-            ->selectRaw('lessons.module_id, count(*) as total')
-            ->groupBy('lessons.module_id')
-            ->pluck('total', 'module_id');
+            ->selectRaw('lessons.modulo_id, count(*) as total')
+            ->groupBy('lessons.modulo_id')
+            ->pluck('total', 'modulo_id');
 
         $modulos = $modules->map(function ($module) use ($completedByModule) {
             return [
@@ -40,11 +41,11 @@ class ModuleController extends Controller
 
     public function show($id) 
     {
-        $modulo = Aula_modulos::with(['lessons' => function ($query) {
+        $modulo = Modulo::with(['lessons' => function ($query) {
             $query->orderBy('ordem');
         }])->findOrFail($id);
 
-        $syllabus = Aula_modulos::select('id', 'titulo')->get();
+        $syllabus = Modulo::select('id', 'titulo')->get();
 
         $concluidas = LessonCompletion::where('user_id', Auth::id())
             ->pluck('lesson_id')
@@ -72,7 +73,7 @@ class ModuleController extends Controller
 
         $titulo = $request->titulo ?? $request->nome;
 
-        Aula_modulos::create([
+        Modulo::create([
             'titulo' => $titulo,
             'descricao' => $request->descricao,
         ]);
@@ -80,7 +81,7 @@ class ModuleController extends Controller
         return redirect()->route('modules.index')->with('success', 'Módulo criado com sucesso!');
     }
 
-    public function destroy(Aula_modulos $module)
+    public function destroy(Modulo $module)
     {
         $module->delete();
 

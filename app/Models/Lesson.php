@@ -9,13 +9,27 @@ class Lesson extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['module_id', 'titulo', 'conteudo', 'ordem'];
+    //Novo codigo
+    protected $fillable = ['modulo_id', 'ordem', 'titulo', 'descricao', 'duracao', 'ativo'];
+    //Codigo antigo
+    //protected $fillable = ['module_id', 'titulo', 'conteudo', 'ordem'];
 
     // Relacionamento: Uma Lição pertence a um Módulo
-    public function module()
+    
+    public function modulo()
     {
-        return $this->belongsTo(Aula_modulos::class, 'module_id');
+        return $this->belongsTo(Modulo::class);
     }
+    
+    //Codigo antigo
+    //public function module()
+    //{
+        
+        
+        //Codigo anigo
+        //return $this->belongsTo(Aula_modulos::class, 'module_id');
+    
+    //}
 
     public function completions()
     {
