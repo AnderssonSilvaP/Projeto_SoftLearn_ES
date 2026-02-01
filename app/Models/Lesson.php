@@ -35,4 +35,10 @@ class Lesson extends Model
     {
         return $this->hasMany(LessonCompletion::class);
     }
+    
+    //Relacionamento um para muitos com flashcard
+    public function flashcards()
+    {
+        return $this->hasMany(Flashcard::class);
+    }
 }
