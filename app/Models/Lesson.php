@@ -35,4 +35,9 @@ class Lesson extends Model
     {
         return $this->hasMany(LessonCompletion::class);
     }
+
+    public function recursos()
+    {
+        return $this->hasMany(Recurso::class);
+    }
 }

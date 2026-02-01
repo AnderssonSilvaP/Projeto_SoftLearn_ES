@@ -64,4 +64,27 @@ class User extends Authenticatable
                     ->withPivot('completed_at', 'score')
                     ->withTimestamps();
     }
+
+    // Um usuário pode estar matriculado em muitos cursos
+    public function matriculas()
+    {
+        return $this->belongsToMany(Curso::class, 'matriculas_cursos', 'user_id', 'curso_id')
+            ->withPivot('status', 'iniciado_em', 'concluido_em');
+    }
+
+    public function progressoModulos() 
+    {
+        return $this->belongsToMany(Modulo::class, 'progresso_modulos')
+            ->using(Progresso_Modulo::class)
+            ->withPivot('progresso', 'status', 'iniciado_em', 'concluido_em')
+            ->withTimestamps();
+    }
+
+    public function aulas()
+    {
+        return $this->belongsToMany(Lesson::class, 'progresso_aulas')
+            ->using(Progresso_Aula::class)
+            ->withPivot('progresso', 'status', 'assistido')
+            ->withTimestamps();
+    }
 }

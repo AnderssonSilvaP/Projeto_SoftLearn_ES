@@ -20,4 +20,10 @@ class Modulo extends Model
     {
         return $this->hasMany(Lesson::class)->orderBy('ordem');
     }
+
+    public function progressoUsuarios() {
+        return $this->belongsToMany(User::class, 'progresso_modulos')
+            //->using(ProgressoModulo::class)
+            ->withPivot('progresso', 'status');
+}
 }

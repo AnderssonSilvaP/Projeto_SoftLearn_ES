@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -20,7 +21,8 @@ return new class extends Migration
             // Assim o laravel vai reconhecer automaticamente que a coluna é uma foreign key
             $table->foreignId('curso_id')->constrained('cursos')->onDelete('cascade');
 
-            // ordem INT NOT NULL CHECK (ordem > 0)
+            // ordem INT NOT NULL CHECK (ordem > 0) 
+            // Constraint implementada abaixo via DB::statement
             $table->integer('ordem');
 
             $table->text('titulo');
@@ -36,6 +38,10 @@ return new class extends Migration
             // CONSTRAINT uq_modulo_titulo UNIQUE (id_curso, titulo)
             $table->unique(['curso_id', 'titulo']);
         });
+
+        // Adicionando as restrições CHECK conforme o diagrama DER
+        DB::statement("ALTER TABLE modulos ADD CONSTRAINT ck_modulo_ordem_positiva 
+            CHECK (ordem > 0)");
     }
 
     /**
