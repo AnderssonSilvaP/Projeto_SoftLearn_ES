@@ -87,4 +87,14 @@ class User extends Authenticatable
             ->withPivot('progresso', 'status', 'assistido')
             ->withTimestamps();
     }
+    
+    /**
+     * Relacionamento muitos para muitos entre user e flashcard
+     */
+    public function flashcards()
+    {
+        return $this->belongsToMany(Flashcard::class)
+                    ->withPivot('easiness_factor','repetitions')
+                    ->withTimestamps();
+    }
 }

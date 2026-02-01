@@ -40,4 +40,10 @@ class Lesson extends Model
     {
         return $this->hasMany(Recurso::class);
     }
+    
+    //Relacionamento um para muitos com flashcard
+    public function flashcards()
+    {
+        return $this->hasMany(Flashcard::class);
+    }
 }
