@@ -1,6 +1,7 @@
 // IMPORTANTE: Este arquivo assume que o jsPlumb foi carregado globalmente via CDN no blade.
 import './bootstrap';
 import './settings.js';
+import './perguntas';
 
 import Alpine from 'alpinejs';
 
