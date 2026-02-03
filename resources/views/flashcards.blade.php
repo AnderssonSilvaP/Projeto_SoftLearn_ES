@@ -1,7 +1,7 @@
 <x-app-layout>
     <style>[x-cloak] { display: none !important; }</style>
     
-    <div class="py-10 px-10" x-data="sistemaPerguntas()" x-cloak>
+    <div class="py-10 px-10 " x-data="sistemaPerguntas()" x-cloak>
         {{-- Corrigido para max-w-7xl ou use full se preferir --}}
         <div class="max-w-8xl mx-auto sm:px-5">
             
@@ -9,7 +9,7 @@
             <div class="flex justify-between items-start mb-5"> 
                 <div>
                     <h1 class="text-3xl font-bold text-[#585555] dark:text-gray-100 mb-2">
-                        Questionários
+                        Teste de conhecimento
                     </h1>
                     <p class="text-black">Relação de temas organizada por blocos, contendo 10 exercícios práticos para cada assunto listado.</p>
                 </div>
@@ -21,8 +21,8 @@
             </div> {{-- AGORA FECHADO CORRETAMENTE --}}
             
             {{-- MOD 2: Grid de Conteúdo (Onde entrará o template) --}}
-            <div class="w-full  rounded-[20px] border-[1.5px] border-[#585555]/25 shadow-lg overflow-hidden">
-                <div class="grid grid-cols-7 px-4 py-3 font-bold text-[#585555] border-[1.5px] border-b-[#585555]/25">
+            <div class="w-full bg-white  rounded-[20px] border-[1.5px] border-[#585555]/25 shadow-lg overflow-hidden">
+                <div class="grid grid-cols-7 px-4 py-3 text-3x1 font-bold text-[#00000] border-[1.5px] border-b-[#585555]/25">
                     <div class="ml-3 col-span-3">Título</div>
                     <div class="text-center" > Status</div>
                     <div class="text-center" >Dificuldade</div>
